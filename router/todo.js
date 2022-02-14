@@ -7,14 +7,14 @@ const storage=multer.diskStorage({
         cb(null,'image')
     },
     filename:function(req,file,cb){
-        cb(null,new Date().toDateString()+file.originalname)
+        cb(new  Error('Error'),new Date().toDateString()+file.originalname)
     }
 })
 const upload=multer({
     storage:storage
 })
 
-router.get('/', upload.single('file') ,async (req, res, next) => {
+router.get('/' ,async (req, res, next) => {
     try{
         const data=await fahad.find({})
         res.json(data)
@@ -22,10 +22,13 @@ router.get('/', upload.single('file') ,async (req, res, next) => {
         next(error);
     }
 })
-router.post('/' ,async (req, res, next) => {
+router.post('/',upload.single('file') ,async (req, res, next) => {
     try{
+        console.log(req.file);
         const data= new fahad(req.body)
-        data.image=req.body.path
+        // here you should use file not body
+        // and you should use data and the name that was defined the the schema file
+        data.image=req.file.filename
         const savadata= await data.save()
         res.json(savadata)
 
