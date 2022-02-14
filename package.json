@@ -1,0 +1,14 @@
+{
+  "name": "backend1",
+  "version": "1.0.0",
+  "description": "backnd",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodmon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
