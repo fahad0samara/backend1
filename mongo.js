@@ -8,11 +8,16 @@ log.error(errr);
 const db = new mongoose.Schema({
     name:{
         type:"string",
-        required:true
+        
     },
     des:{
         type:"string",
-        required:true
+      
+    },
+    image:{
+        type:"string",
+        
+
     }
 },
 {timestamps: true}

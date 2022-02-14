@@ -8,7 +8,9 @@ app.set('port', process.env.port || 3000)
 app.get('/', (req, res, next) =>{
     res.send('<h1>Hello world<h1>');
 })
-app.use(express.json()) 
+app.use(express.json())
+app.use(express.static(path.join(__dirname, 'image')))
+ 
 app.use('/todo',router)
 
 app.listen(app.get('port'), server =>{
